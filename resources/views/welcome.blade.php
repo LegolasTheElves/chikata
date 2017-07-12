@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title')
-Chikata
+CHIKATA
 @endsection
 @section('content')
-    <h1>Welcome</h1>
+    <h1>Welcome the world</h1>
 @endsection
