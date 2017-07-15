@@ -14,13 +14,30 @@
 
 Route::group(['middleware'=>'web'], function(){
     
-    Route::get('/', function () {
+    Route::get('/', function () { 
     return view('welcome');
-});
+})->name('home');
     
     //route for signup
         Route::post('/signup', [
         'uses' => 'UserController@postSignup',
         'as' => 'signup'
     ]);
+     //route for signin
+        Route::post('/signin', [
+        'uses' => 'UserController@postSignin',
+        'as' => 'signin'
+    ]);
+    //route to dashboard view
+    Route::get('/dashboard', [
+        'uses' => 'PostController@getDashboard',
+        'as' => 'dashboard',
+        'middleware' => 'auth'
+    ]);
+    //createpost route
+     Route::post('/createpost', [
+        'uses' => 'PostController@postCreatePost',
+        'as' => 'post.create'
+    ]);
+    
  });
