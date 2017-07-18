@@ -28,10 +28,13 @@
                     Post by {{$post->user->first_name}} on {{$post->created_at}}
                 </div>
                 <div class="interaction">
-                    <a href="">Like</a>
+                    <a href="">Like</a> |
                     <a href="">Dislike</a>
-                    <a href="">Edit</a>
-                    <a href="">Delete</a>
+                    @if(Auth::user() == $post->user)
+                    |
+                    <a href="">Edit</a> |
+                    <a href="{{ route('post.delete', ['post_id' => $post->id]) }}">Delete</a>
+                    @endif
                 </div>
             </article>
         @endforeach

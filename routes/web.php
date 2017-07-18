@@ -28,6 +28,12 @@ Route::group(['middleware'=>'web'], function(){
         'uses' => 'UserController@postSignin',
         'as' => 'signin'
     ]);
+    //logout route
+        Route::get('/logout', [
+        'uses' => 'UserController@getLogout',
+        'as' => 'logout'
+    ]);
+    
     //route to dashboard view
     Route::get('/dashboard', [
         'uses' => 'PostController@getDashboard',
@@ -37,7 +43,19 @@ Route::group(['middleware'=>'web'], function(){
     //createpost route
      Route::post('/createpost', [
         'uses' => 'PostController@postCreatePost',
-        'as' => 'post.create'
+        'as' => 'post.create',
+         'middleware' => 'auth'
     ]);
+    //deleting post route
+     Route::get('/delete-post/{post_id}', [
+        'uses' => 'PostController@getDeletePost',
+        'as' => 'post.delete',
+         'middleware' => 'auth'
+    ]);
+    //heroku on cleardb
+    Route::get('/', function()
+    {
+        return User::all();
+    });
     
  });
