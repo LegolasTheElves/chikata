@@ -52,10 +52,8 @@ Route::group(['middleware'=>'web'], function(){
         'as' => 'post.delete',
          'middleware' => 'auth'
     ]);
-    //heroku on cleardb
-    Route::get('/', function()
-    {
-        return User::all();
-    });
+    Route::post('/edit', function(\Illuminate\Http\Request $request){
+        return response()->json(['message' => $request['body']]);
+    })->name('edit');
     
  });
