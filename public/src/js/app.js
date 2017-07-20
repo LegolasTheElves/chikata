@@ -43,4 +43,3 @@ $('.like').on('click', function (event){
         //change the page
     });
 });
-
