@@ -22,7 +22,7 @@
             <h3>What other peaple say ....</h3>
         </header>
         @foreach($posts as $post)
-            <article class="post">
+            <article class="post" data-postid="{{ $post->id }}" >
                 <p> {{$post->body}}</p>
                 <div class="info">
                     Post by {{$post->user->first_name}} on {{$post->created_at}}

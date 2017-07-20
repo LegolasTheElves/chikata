@@ -33,7 +33,16 @@ Route::group(['middleware'=>'web'], function(){
         'uses' => 'UserController@getLogout',
         'as' => 'logout'
     ]);
-    
+    //user account route
+    Route::get('/account', [
+        'uses' => 'UserController@getAccount',
+        'as' => 'account'
+    ]);
+    //user update routes
+    Route::get('/updateaccount', [
+        'uses' => 'UserController@postSaveAccount',
+        'as' => 'account.save'
+    ]);
     //route to dashboard view
     Route::get('/dashboard', [
         'uses' => 'PostController@getDashboard',
@@ -52,8 +61,9 @@ Route::group(['middleware'=>'web'], function(){
         'as' => 'post.delete',
          'middleware' => 'auth'
     ]);
-    Route::post('/edit', function(\Illuminate\Http\Request $request){
-        return response()->json(['message' => $request['body']]);
-    })->name('edit');
+    Route::post('/edit', [
+        'uses' => 'PostController@postEditPost',
+        'as' => 'edit'
+    ]);
     
  });
