@@ -12,7 +12,8 @@ class UserController extends Controller
         return view('dashboard');
     }
     //post controller for signup
-    public function postSignup(Request $request){
+    public function postSignup(Request $request)
+    {
         //validation user input in signup
         $this->validate($request, [
             'email' => 'required|unique:users|',
@@ -53,5 +54,4 @@ class UserController extends Controller
     public function getAccount(){
         return view('account', ['user' => Auth::user()]);
     }
-    
 }

@@ -61,9 +61,15 @@ Route::group(['middleware'=>'web'], function(){
         'as' => 'post.delete',
          'middleware' => 'auth'
     ]);
+    //route for edit post
     Route::post('/edit', [
         'uses' => 'PostController@postEditPost',
         'as' => 'edit'
+    ]);
+    //route for like and dislike
+    Route::post('/like', [
+        'uses' => 'PostController@postLikePost',
+        'as' => 'like'
     ]);
     
  });
