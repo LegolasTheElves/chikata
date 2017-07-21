@@ -33,13 +33,18 @@ Route::group(['middleware'=>'web'], function(){
         'uses' => 'UserController@getLogout',
         'as' => 'logout'
     ]);
+    //route to get the image from the filename
+    Route::get('/userimage/{filename}', [
+       'uses' => 'UserController@getUserImage',
+        'as' => 'account.image'
+    ]);
     //user account route
     Route::get('/account', [
         'uses' => 'UserController@getAccount',
         'as' => 'account'
     ]);
     //user update routes
-    Route::get('/updateaccount', [
+    Route::post('/updateaccount', [
         'uses' => 'UserController@postSaveAccount',
         'as' => 'account.save'
     ]);
